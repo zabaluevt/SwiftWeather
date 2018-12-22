@@ -1,0 +1,52 @@
+Podfile
+Podfile.lock
+Pods/Manifest.lock
+Pods/Alamofire/LICENSE
+Pods/Alamofire/README.md
+Pods/Alamofire/Source/AFError.swift
+Pods/Alamofire/Source/Alamofire.swift
+Pods/Alamofire/Source/DispatchQueue+Alamofire.swift
+Pods/Alamofire/Source/EventMonitor.swift
+Pods/Alamofire/Source/HTTPHeaders.swift
+Pods/Alamofire/Source/HTTPMethod.swift
+Pods/Alamofire/Source/MultipartFormData.swift
+Pods/Alamofire/Source/MultipartUpload.swift
+Pods/Alamofire/Source/NetworkReachabilityManager.swift
+Pods/Alamofire/Source/Notifications.swift
+Pods/Alamofire/Source/OperationQueue+Alamofire.swift
+Pods/Alamofire/Source/ParameterEncoder.swift
+Pods/Alamofire/Source/ParameterEncoding.swift
+Pods/Alamofire/Source/Protector.swift
+Pods/Alamofire/Source/Request.swift
+Pods/Alamofire/Source/RequestAdapter.swift
+Pods/Alamofire/Source/RequestRetrier.swift
+Pods/Alamofire/Source/RequestTaskMap.swift
+Pods/Alamofire/Source/Response.swift
+Pods/Alamofire/Source/ResponseSerialization.swift
+Pods/Alamofire/Source/Result.swift
+Pods/Alamofire/Source/ServerTrustEvaluation.swift
+Pods/Alamofire/Source/Session.swift
+Pods/Alamofire/Source/SessionStateProvider.swift
+Pods/Alamofire/Source/URLConvertible+URLRequestConvertible.swift
+Pods/Alamofire/Source/URLSessionConfiguration+Alamofire.swift
+Pods/Alamofire/Source/Validation.swift
+Pods/Headers/Public/Alamofire/Alamofire-umbrella.h
+Pods/Headers/Public/Alamofire/Alamofire.modulemap
+Pods/Pods.xcodeproj/project.pbxproj
+Pods/Pods.xcodeproj/xcuserdata/olga.xcuserdatad/xcschemes/Alamofire.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/olga.xcuserdatad/xcschemes/Pods-WeatherSwift.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/olga.xcuserdatad/xcschemes/xcschememanagement.plist
+Pods/Target Support Files/Alamofire/Alamofire-dummy.m
+Pods/Target Support Files/Alamofire/Alamofire-prefix.pch
+Pods/Target Support Files/Alamofire/Alamofire.xcconfig
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift-acknowledgements.markdown
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift-acknowledgements.plist
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift-dummy.m
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift-frameworks.sh
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift-resources.sh
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift-umbrella.h
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift.debug.xcconfig
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift.modulemap
+Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift.release.xcconfig
+WeatherSwift.xcworkspace/contents.xcworkspacedata
+WeatherSwift.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
