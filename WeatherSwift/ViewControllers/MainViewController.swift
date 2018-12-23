@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        API.get(city: "samara", completHandler: { response in
+            let tt = response.list?.first?.dtTxt
+           
+        }, errorHandler: { error in
+            
+        })
     }
-
-
 }
 
