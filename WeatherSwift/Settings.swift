@@ -17,18 +17,21 @@ struct Settings {
         static let secondPartPath = "/data/2.5/"
         
         enum ApiKey: String {
-            case oneDay = "weather"
+            case OneDay = "weather"
             case FewDays = "forecast"
         }
         static let apiKey = "weather?q=samara"
         
         static let appId = "96e1acdb11e7e23103af509121e8c25f"
         
-        static var URL: String {
-            return domain + secondPartPath + ApiKey.oneDay.rawValue
+        static var city:String = "samara" {
+            didSet {
+                print(city)
+            }
         }
         
-        
+        static var URL: String {
+            return domain + secondPartPath + ApiKey.OneDay.rawValue
+        }
     }
-    
 }

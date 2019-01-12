@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ExtendedForecastViewController: UIViewController{
+class ExtendedForecastViewController: UIViewController {
+    
+    @IBAction func menuButtonClick(_ sender: Any) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

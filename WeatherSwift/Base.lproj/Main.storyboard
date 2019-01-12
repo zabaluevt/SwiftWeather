@@ -37,8 +37,19 @@
                             <outletCollection property="gestureRecognizers" destination="MZH-PD-OQE" appends="YES" id="b7P-4O-yjA"/>
                         </connections>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="exN-0E-bCk"/>
+                        <barButtonItem title="Item" image="menu.png" id="tQw-Dl-PoU">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-8"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="menuButtonClick:" destination="BYZ-38-t0r" id="Etu-23-YvO"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="qoD-LD-mGa"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="iconImageView" destination="xYn-PH-PXg" id="aXl-BX-i5l"/>
                         <outlet property="temperature" destination="NQx-Ic-LwE" id="Xw3-k8-EaR"/>
@@ -67,24 +78,86 @@
                             <outletCollection property="gestureRecognizers" destination="DLK-Tf-LzO" appends="YES" id="qSr-Jw-CL4"/>
                         </connections>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Fiu-Uh-lBU"/>
+                        <barButtonItem title="Item" image="menu.png" id="vth-ux-R72">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-8"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="menuButtonClick:" destination="N04-wE-8N0" id="jEe-9N-0YW"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="xGq-Vi-AWY"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heL-nU-Evk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="DLK-Tf-LzO"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="124"/>
+            <point key="canvasLocation" x="1740" y="123.68815592203899"/>
+        </scene>
+        <!--Popup View Controller-->
+        <scene sceneID="Ucb-hw-beL">
+            <objects>
+                <viewController storyboardIdentifier="PopupViewController" id="t5u-fB-2Zl" customClass="PopupViewController" customModule="WeatherSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ef-kx-lfZ">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJB-6X-34s">
+                                <rect key="frame" x="0.0" y="165" width="300" height="215"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="t5u-fB-2Zl" id="ERu-yY-uPr"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите город" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ato-sk-PDA">
+                                <rect key="frame" x="16" y="80" width="268" height="65"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83068265409999997" green="0.89262023140000002" blue="0.29114619559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OXz-z5-Rqu" firstAttribute="bottom" secondItem="MJB-6X-34s" secondAttribute="bottom" constant="20" id="4Ln-uj-FCj"/>
+                            <constraint firstItem="MJB-6X-34s" firstAttribute="leading" secondItem="7ef-kx-lfZ" secondAttribute="leading" id="Shz-gf-UFc"/>
+                            <constraint firstItem="ato-sk-PDA" firstAttribute="top" secondItem="OXz-z5-Rqu" secondAttribute="top" constant="80" id="UOX-bX-Odd"/>
+                            <constraint firstAttribute="trailing" secondItem="ato-sk-PDA" secondAttribute="trailing" constant="16" id="cFY-Np-P3L"/>
+                            <constraint firstItem="MJB-6X-34s" firstAttribute="top" secondItem="ato-sk-PDA" secondAttribute="bottom" constant="20" id="eUA-rZ-bBh"/>
+                            <constraint firstItem="ato-sk-PDA" firstAttribute="leading" secondItem="OXz-z5-Rqu" secondAttribute="leading" constant="16" id="erO-ab-xgc"/>
+                            <constraint firstItem="OXz-z5-Rqu" firstAttribute="bottom" secondItem="ato-sk-PDA" secondAttribute="bottom" constant="255" id="s33-lh-9TW"/>
+                            <constraint firstItem="OXz-z5-Rqu" firstAttribute="trailing" secondItem="MJB-6X-34s" secondAttribute="trailing" id="ywQ-73-ls5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OXz-z5-Rqu"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                    <connections>
+                        <outlet property="cityPicker" destination="MJB-6X-34s" id="ZRx-6m-RXH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nYe-n2-fTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2608" y="123.23838080959521"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="M9U-yv-JzY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kfo-9F-UwI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" toolbarHidden="NO" id="kfo-9F-UwI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vvQ-83-V23">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="OIH-tO-OCr">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.98447873857286239" alpha="1" colorSpace="calibratedWhite"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4gs-1J-GR4"/>
                     </connections>
@@ -94,4 +167,7 @@
             <point key="canvasLocation" x="31" y="124"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu.png" width="50" height="50"/>
+    </resources>
 </document>
