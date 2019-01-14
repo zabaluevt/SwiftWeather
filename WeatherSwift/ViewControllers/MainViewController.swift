@@ -12,10 +12,12 @@ import Alamofire
 class MainViewController: UIViewController {
 
     @IBAction func menuButtonClick(_ sender: Any) {
+        
         let popup = PopupViewController.create()
         let sbPopup = SBCardPopupViewController(contentViewController: popup)
         
         sbPopup.show(onViewController: self)
+        
     }
     
     @IBOutlet weak var temperature: UILabel!
@@ -31,10 +33,7 @@ class MainViewController: UIViewController {
             return nil
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
+    func makeRequest() {
         API.get(city: "samara", completHandler: { response in
             //let tt = response.list?.first?.dtTxt
             
@@ -42,7 +41,15 @@ class MainViewController: UIViewController {
             self.temperature.text = String(format:"%.1f", (response.main?.temp)! - 273)
         }, errorHandler: { error in
             
-            })
+        })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        makeRequest()
+        
+        
        
         //let circleLayer = CAShapeLayer();
 //        circleLayer.path = UIBezierPath(ovalIn: CGRect(x: 50, y: 50, width: 100, height: 100)).cgPath;

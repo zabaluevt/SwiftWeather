@@ -11,7 +11,6 @@ import UIKit
 class PopupViewController: UIViewController, SBCardPopupContent, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var cityPicker: UIPickerView!
-    let arrayCities = ["Самара", "Москва", "Лондон", "Манчестер", "Ливерпуль"]
     
     var popupViewController: SBCardPopupViewController?
     
@@ -19,43 +18,38 @@ class PopupViewController: UIViewController, SBCardPopupContent, UIPickerViewDel
     
     var allowsSwipeToDismissPopupCard: Bool = true
     
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return arrayCities.count
+        
+        return Settings.City.citiesDictionary.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return arrayCities[row]
+
+        return Array(Settings.City.citiesDictionary.values)[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch arrayCities[row] {
-            case "Самара":
-                Settings.API.city = "Samara"
-            case "Москва":
-                Settings.API.city = "Moscow"
-            case "Лондон":
-                Settings.API.city = "London"
-            case "Манчестер":
-                Settings.API.city = "Manchester"
-            case "Ливерпуль":
-                Settings.API.city = "Liverpool"
-            default:
-                Settings.API.city = "Empty"
-        }
+        
+        Settings.City.cityForUrlName = Array(Settings.City.citiesDictionary.keys)[row]
+        Settings.City.numberOfSelectedRowCity = cityPicker.selectedRow(inComponent: 0)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
         return 1
     }
     
     static func create() -> UIViewController{
-        let storyboard = UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopupViewController") as! PopupViewController
         
-        return storyboard
+        return UIStoryboard.init(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "PopupViewController") as! PopupViewController
     }
     
     override func viewDidLoad() {
+        
         cityPicker.delegate = self
         cityPicker.dataSource = self
+        
+        cityPicker.selectRow(Settings.City.numberOfSelectedRowCity, inComponent: 0, animated: true)
     }
 }

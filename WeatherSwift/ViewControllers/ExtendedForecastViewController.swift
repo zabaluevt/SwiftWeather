@@ -11,12 +11,16 @@ import UIKit
 class ExtendedForecastViewController: UIViewController {
     
     @IBAction func menuButtonClick(_ sender: Any) {
+        
+        let popup = PopupViewController.create()
+        let sbPopup = SBCardPopupViewController(contentViewController: popup)
+        
+        sbPopup.show(onViewController: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
         //Добавляем свайп назад
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handelSwipe(sender:)))
         rightSwipe.direction = .right
@@ -25,6 +29,7 @@ class ExtendedForecastViewController: UIViewController {
     }
     
     @objc func handelSwipe(sender: UISwipeGestureRecognizer){
+        
         if let navgateBack = self.navigationController {
             navgateBack.popViewController(animated: true)
         }

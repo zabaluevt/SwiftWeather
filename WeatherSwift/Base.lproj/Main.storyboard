@@ -106,13 +106,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJB-6X-34s">
-                                <rect key="frame" x="0.0" y="165" width="300" height="215"/>
+                                <rect key="frame" x="0.0" y="96" width="300" height="304"/>
                                 <connections>
                                     <outlet property="dataSource" destination="t5u-fB-2Zl" id="ERu-yY-uPr"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите город" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ato-sk-PDA">
-                                <rect key="frame" x="16" y="80" width="268" height="65"/>
+                                <rect key="frame" x="16" y="60" width="268" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -120,13 +120,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.83068265409999997" green="0.89262023140000002" blue="0.29114619559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OXz-z5-Rqu" firstAttribute="bottom" secondItem="MJB-6X-34s" secondAttribute="bottom" constant="20" id="4Ln-uj-FCj"/>
+                            <constraint firstItem="OXz-z5-Rqu" firstAttribute="bottom" secondItem="MJB-6X-34s" secondAttribute="bottom" id="4Ln-uj-FCj"/>
                             <constraint firstItem="MJB-6X-34s" firstAttribute="leading" secondItem="7ef-kx-lfZ" secondAttribute="leading" id="Shz-gf-UFc"/>
-                            <constraint firstItem="ato-sk-PDA" firstAttribute="top" secondItem="OXz-z5-Rqu" secondAttribute="top" constant="80" id="UOX-bX-Odd"/>
+                            <constraint firstItem="ato-sk-PDA" firstAttribute="top" secondItem="OXz-z5-Rqu" secondAttribute="top" constant="60" id="UOX-bX-Odd"/>
                             <constraint firstAttribute="trailing" secondItem="ato-sk-PDA" secondAttribute="trailing" constant="16" id="cFY-Np-P3L"/>
-                            <constraint firstItem="MJB-6X-34s" firstAttribute="top" secondItem="ato-sk-PDA" secondAttribute="bottom" constant="20" id="eUA-rZ-bBh"/>
+                            <constraint firstItem="MJB-6X-34s" firstAttribute="top" secondItem="ato-sk-PDA" secondAttribute="bottom" id="eUA-rZ-bBh"/>
                             <constraint firstItem="ato-sk-PDA" firstAttribute="leading" secondItem="OXz-z5-Rqu" secondAttribute="leading" constant="16" id="erO-ab-xgc"/>
-                            <constraint firstItem="OXz-z5-Rqu" firstAttribute="bottom" secondItem="ato-sk-PDA" secondAttribute="bottom" constant="255" id="s33-lh-9TW"/>
+                            <constraint firstItem="MJB-6X-34s" firstAttribute="top" secondItem="ato-sk-PDA" secondAttribute="bottom" id="lcu-8i-x7N"/>
                             <constraint firstItem="OXz-z5-Rqu" firstAttribute="trailing" secondItem="MJB-6X-34s" secondAttribute="trailing" id="ywQ-73-ls5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OXz-z5-Rqu"/>

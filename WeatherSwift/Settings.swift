@@ -10,6 +10,18 @@ import Foundation
 
 struct Settings {
     
+    struct City {
+        static let citiesDictionary = ["samara": "Самара", "moscow": "Москва", "london": "Лондон", "manchester": "Манчестер", "liverpool": "Ливерпуль"]
+        
+        static var numberOfSelectedRowCity: Int = 0
+        
+        static var cityForUrlName: String = "samara" {
+            didSet {
+                print("Выбран город " + cityForUrlName)
+            }
+        }
+    }
+    
     struct API {
         //http://api.openweathermap.org/data/2.5/weather?q=city&APPID=96e1acdb11e7e23103af509121e8c25f
         static let domain = "http://api.openweathermap.org"
@@ -20,15 +32,9 @@ struct Settings {
             case OneDay = "weather"
             case FewDays = "forecast"
         }
-        static let apiKey = "weather?q=samara"
+        static var apiKey = "weather?q=\(Settings.City.cityForUrlName)"
         
         static let appId = "96e1acdb11e7e23103af509121e8c25f"
-        
-        static var city:String = "samara" {
-            didSet {
-                print(city)
-            }
-        }
         
         static var URL: String {
             return domain + secondPartPath + ApiKey.OneDay.rawValue

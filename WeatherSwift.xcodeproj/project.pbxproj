@@ -123,10 +123,10 @@
 		775A687421CEDE5D000608B9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				77E6BCB421E6ACB300F8D236 /* SBCardPopupViewController.swift */,
+				775A687521CEE7BC000608B9 /* ExtendedForecastViewController.swift */,
 				7768C59A21CEC2C20059666E /* MainViewController.swift */,
 				77E6BCB221E6A91A00F8D236 /* PopupViewController.swift */,
-				775A687521CEE7BC000608B9 /* ExtendedForecastViewController.swift */,
+				77E6BCB421E6ACB300F8D236 /* SBCardPopupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
