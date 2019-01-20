@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7717E9BC21CFC46A00D98F13 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7717E9BB21CFC46A00D98F13 /* API.swift */; };
+		7737789A21EF94D40050301C /* AdditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737789821EF94D40050301C /* AdditionTableViewCell.swift */; };
+		7737789B21EF94D40050301C /* AdditionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737789921EF94D40050301C /* AdditionTableViewCell.xib */; };
+		7737789E21EF98310050301C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7737789C21EF98310050301C /* TableViewCell.swift */; };
+		7737789F21EF98310050301C /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7737789D21EF98310050301C /* TableViewCell.xib */; };
 		775A687621CEE7BC000608B9 /* ExtendedForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A687521CEE7BC000608B9 /* ExtendedForecastViewController.swift */; };
 		775A687A21CEF2EF000608B9 /* JsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A687921CEF2EF000608B9 /* JsonResponse.swift */; };
 		775A687C21CEF370000608B9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775A687B21CEF370000608B9 /* Settings.swift */; };
@@ -17,6 +21,8 @@
 		7768C5A021CEC2C40059666E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7768C59F21CEC2C40059666E /* Assets.xcassets */; };
 		7768C5A321CEC2C40059666E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7768C5A121CEC2C40059666E /* LaunchScreen.storyboard */; };
 		7768C5AE21CEC2C40059666E /* WeatherSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768C5AD21CEC2C40059666E /* WeatherSwiftTests.swift */; };
+		778B35B421F35CC100B04C32 /* DateOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778B35B321F35CC100B04C32 /* DateOperations.swift */; };
+		77CCB51321EFC6F000483EEE /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CCB51221EFC6F000483EEE /* CheckInternet.swift */; };
 		77E6BCB021E69C3D00F8D236 /* shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 77E6BCAF21E69C3D00F8D236 /* shape.png */; };
 		77E6BCB321E6A91A00F8D236 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6BCB221E6A91A00F8D236 /* PopupViewController.swift */; };
 		77E6BCB521E6ACB300F8D236 /* SBCardPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6BCB421E6ACB300F8D236 /* SBCardPopupViewController.swift */; };
@@ -37,6 +43,10 @@
 /* Begin PBXFileReference section */
 		4E9DB9F1FF18DB2F00969A7F /* Pods-WeatherSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherSwift/Pods-WeatherSwift.release.xcconfig"; sourceTree = "<group>"; };
 		7717E9BB21CFC46A00D98F13 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		7737789821EF94D40050301C /* AdditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionTableViewCell.swift; sourceTree = "<group>"; };
+		7737789921EF94D40050301C /* AdditionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionTableViewCell.xib; sourceTree = "<group>"; };
+		7737789C21EF98310050301C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7737789D21EF98310050301C /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		775A687521CEE7BC000608B9 /* ExtendedForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedForecastViewController.swift; sourceTree = "<group>"; };
 		775A687921CEF2EF000608B9 /* JsonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponse.swift; sourceTree = "<group>"; };
 		775A687B21CEF370000608B9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -50,6 +60,8 @@
 		7768C5A921CEC2C40059666E /* WeatherSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7768C5AD21CEC2C40059666E /* WeatherSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSwiftTests.swift; sourceTree = "<group>"; };
 		7768C5AF21CEC2C40059666E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778B35B321F35CC100B04C32 /* DateOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOperations.swift; sourceTree = "<group>"; };
+		77CCB51221EFC6F000483EEE /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		77E6BC8F21E68B7500F8D236 /* 10n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10n.png; sourceTree = "<group>"; };
 		77E6BC9021E68B7500F8D236 /* 03d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03d.png; sourceTree = "<group>"; };
 		77E6BC9121E68B7600F8D236 /* 11d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11d.png; sourceTree = "<group>"; };
@@ -112,6 +124,17 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		7737789721EF94BA0050301C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7737789821EF94D40050301C /* AdditionTableViewCell.swift */,
+				7737789921EF94D40050301C /* AdditionTableViewCell.xib */,
+				7737789C21EF98310050301C /* TableViewCell.swift */,
+				7737789D21EF98310050301C /* TableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		775A687321CEDE4F000608B9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,16 +177,15 @@
 		7768C59721CEC2C20059666E /* WeatherSwift */ = {
 			isa = PBXGroup;
 			children = (
+				77CCB51421EFC7DA00483EEE /* Helpers */,
+				7737789721EF94BA0050301C /* Cells */,
 				775A687421CEDE5D000608B9 /* ViewControllers */,
 				775A687321CEDE4F000608B9 /* Images */,
 				7768C59821CEC2C20059666E /* AppDelegate.swift */,
-				7717E9BB21CFC46A00D98F13 /* API.swift */,
 				7768C59C21CEC2C20059666E /* Main.storyboard */,
 				7768C59F21CEC2C40059666E /* Assets.xcassets */,
 				7768C5A121CEC2C40059666E /* LaunchScreen.storyboard */,
 				7768C5A421CEC2C40059666E /* Info.plist */,
-				775A687921CEF2EF000608B9 /* JsonResponse.swift */,
-				775A687B21CEF370000608B9 /* Settings.swift */,
 			);
 			path = WeatherSwift;
 			sourceTree = "<group>";
@@ -175,6 +197,18 @@
 				7768C5AF21CEC2C40059666E /* Info.plist */,
 			);
 			path = WeatherSwiftTests;
+			sourceTree = "<group>";
+		};
+		77CCB51421EFC7DA00483EEE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7717E9BB21CFC46A00D98F13 /* API.swift */,
+				77CCB51221EFC6F000483EEE /* CheckInternet.swift */,
+				778B35B321F35CC100B04C32 /* DateOperations.swift */,
+				775A687B21CEF370000608B9 /* Settings.swift */,
+				775A687921CEF2EF000608B9 /* JsonResponse.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		77E6BC8E21E68B6200F8D236 /* Weather */ = {
@@ -304,7 +338,9 @@
 			files = (
 				7768C5A321CEC2C40059666E /* LaunchScreen.storyboard in Resources */,
 				77E6BCB621E6B07E00F8D236 /* menu.png in Resources */,
+				7737789F21EF98310050301C /* TableViewCell.xib in Resources */,
 				77E6BCB021E69C3D00F8D236 /* shape.png in Resources */,
+				7737789B21EF94D40050301C /* AdditionTableViewCell.xib in Resources */,
 				7768C5A021CEC2C40059666E /* Assets.xcassets in Resources */,
 				7768C59E21CEC2C20059666E /* Main.storyboard in Resources */,
 			);
@@ -353,6 +389,10 @@
 				775A687C21CEF370000608B9 /* Settings.swift in Sources */,
 				775A687A21CEF2EF000608B9 /* JsonResponse.swift in Sources */,
 				775A687621CEE7BC000608B9 /* ExtendedForecastViewController.swift in Sources */,
+				7737789A21EF94D40050301C /* AdditionTableViewCell.swift in Sources */,
+				778B35B421F35CC100B04C32 /* DateOperations.swift in Sources */,
+				7737789E21EF98310050301C /* TableViewCell.swift in Sources */,
+				77CCB51321EFC6F000483EEE /* CheckInternet.swift in Sources */,
 				7717E9BC21CFC46A00D98F13 /* API.swift in Sources */,
 				77E6BCB521E6ACB300F8D236 /* SBCardPopupViewController.swift in Sources */,
 				7768C59921CEC2C20059666E /* AppDelegate.swift in Sources */,

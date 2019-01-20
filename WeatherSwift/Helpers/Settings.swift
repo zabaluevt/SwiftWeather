@@ -23,21 +23,18 @@ struct Settings {
     }
     
     struct API {
-        //http://api.openweathermap.org/data/2.5/weather?q=city&APPID=96e1acdb11e7e23103af509121e8c25f
+        //http://api.openweathermap.org/data/2.5/weather?q=samara&APPID=96e1acdb11e7e23103af509121e8c25f
         static let domain = "http://api.openweathermap.org"
         
         static let secondPartPath = "/data/2.5/"
-        
-        enum ApiKey: String {
-            case OneDay = "weather"
-            case FewDays = "forecast"
-        }
-        static var apiKey = "weather?q=\(Settings.City.cityForUrlName)"
-        
+
         static let appId = "96e1acdb11e7e23103af509121e8c25f"
         
-        static var URL: String {
-            return domain + secondPartPath + ApiKey.OneDay.rawValue
+        static var URLOneDay: String {
+            return domain + secondPartPath + "weather"
+        }
+        static var URLFewDays: String {
+            return domain + secondPartPath + "forecast"
         }
     }
 }

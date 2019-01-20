@@ -11,6 +11,8 @@ import Alamofire
 
 class MainViewController: UIViewController {
 
+    var refreshControl = UIRefreshControl()
+    
     @IBAction func menuButtonClick(_ sender: Any) {
         
         let popup = PopupViewController.create()
@@ -34,18 +36,30 @@ class MainViewController: UIViewController {
         }
     }
     func makeRequest() {
-        API.get(city: "samara", completHandler: { response in
+        API.get(city: Settings.City.cityForUrlName, url: Settings.API.URLOneDay, completHandler: { response in
             //let tt = response.list?.first?.dtTxt
             
-            self.iconImageView.image = self.getIcon(iconPath: response.weather?.first?.icon ?? "")
-            self.temperature.text = String(format:"%.1f", (response.main?.temp)! - 273)
+            self.iconImageView.image = self.getIcon(iconPath: response?.weather?.first?.icon ?? "")
+            self.temperature.text = String(format:"%.1f", (response?.main?.temp)! - 273)
         }, errorHandler: { error in
-            
+            print("error")
         })
+    }
+    
+    @objc func refresh(){
+        
+        self.viewDidLoad()
+        //reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //swipe down
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        //view.addSubview(refreshControl)
+        
         
         makeRequest()
         
