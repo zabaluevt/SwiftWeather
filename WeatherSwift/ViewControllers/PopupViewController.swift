@@ -8,16 +8,21 @@
 
 import UIKit
 
+protocol PopupDelegate: class {
+    func popupClosed()
+}
+
 class PopupViewController: UIViewController, SBCardPopupContent, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var cityPicker: UIPickerView!
     
     var popupViewController: SBCardPopupViewController?
-    
     var allowsTapToDismissPopupCard: Bool = true
-    
     var allowsSwipeToDismissPopupCard: Bool = true
     
+    static weak var shared: PopupViewController!
+    weak var delegate: PopupDelegate?
+
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
@@ -32,6 +37,7 @@ class PopupViewController: UIViewController, SBCardPopupContent, UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         Settings.City.cityForUrlName = Array(Settings.City.citiesDictionary.keys)[row]
+        Settings.City.cityForDisplayName = Array(Settings.City.citiesDictionary.values)[row]
         Settings.City.numberOfSelectedRowCity = cityPicker.selectedRow(inComponent: 0)
     }
     
@@ -46,10 +52,14 @@ class PopupViewController: UIViewController, SBCardPopupContent, UIPickerViewDel
     }
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         cityPicker.delegate = self
         cityPicker.dataSource = self
+        PopupViewController.shared = self
         
         cityPicker.selectRow(Settings.City.numberOfSelectedRowCity, inComponent: 0, animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.popupClosed()
     }
 }

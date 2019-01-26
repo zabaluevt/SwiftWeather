@@ -9,9 +9,11 @@
 import UIKit
 import Alamofire
 
-class MainViewController: UIViewController {
-
-    var refreshControl = UIRefreshControl()
+class MainViewController: UIViewController, PopupDelegate {
+    
+    func popupClosed() {
+        makeRequest()
+    }
     
     @IBAction func menuButtonClick(_ sender: Any) {
         
@@ -19,56 +21,43 @@ class MainViewController: UIViewController {
         let sbPopup = SBCardPopupViewController(contentViewController: popup)
         
         sbPopup.show(onViewController: self)
-        
+        PopupViewController.shared.delegate = self
     }
+    
     
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var descriptionWeatherLabel: UILabel!
     
     func getIcon(iconPath: String) -> UIImage?{
+        
         if (UIImage(named: iconPath) != nil){
             return UIImage(named: iconPath)!
         }
         else {
             //TODO Error
-            
+
             return nil
         }
     }
+    
     func makeRequest() {
+        
         API.get(city: Settings.City.cityForUrlName, url: Settings.API.URLOneDay, completHandler: { response in
-            //let tt = response.list?.first?.dtTxt
-            
+            self.cityNameLabel.text = Settings.City.cityForDisplayName
+            self.descriptionWeatherLabel.text = response?.weather?.first?.description ?? ""
             self.iconImageView.image = self.getIcon(iconPath: response?.weather?.first?.icon ?? "")
-            self.temperature.text = String(format:"%.1f", (response?.main?.temp)! - 273)
+            self.temperature.text = String(format:"%.0f", (response?.main?.temp)! - 273) + "℃"
         }, errorHandler: { error in
             print("error")
         })
     }
     
-    @objc func refresh(){
-        
-        self.viewDidLoad()
-        //reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //swipe down
-        refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        //view.addSubview(refreshControl)
-        
-        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.jpg")!)
         makeRequest()
-        
-        
-       
-        //let circleLayer = CAShapeLayer();
-//        circleLayer.path = UIBezierPath(ovalIn: CGRect(x: 50, y: 50, width: 100, height: 100)).cgPath;
-         //navigationController?.toolbarItems?
-//        view.layer.addSublayer(circleLayer)
     }
 }
 

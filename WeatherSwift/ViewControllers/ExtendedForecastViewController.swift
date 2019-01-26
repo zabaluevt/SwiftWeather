@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ExtendedForecastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ExtendedForecastViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PopupDelegate {
     
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var cityLabel: UILabel!
     
     var arrayWeather: [MyWeather] = []
     var refreshControl = UIRefreshControl()
@@ -22,6 +23,15 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         var titleString: String
         var maxTempString: String
         var minTempString: String
+    }
+    
+    func popupClosed() {
+        refresh()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 65.0;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,10 +55,13 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         let sbPopup = SBCardPopupViewController(contentViewController: popup)
         
         sbPopup.show(onViewController: self)
+        PopupViewController.shared.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.jpg")!)
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         self.mainTableView.register(nib, forCellReuseIdentifier: "CellIndetifier")
@@ -81,7 +94,6 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         
         let weekDay = myCalendar.component(.weekday, from: Date())
         
-        
         let tommorowDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         let oneDayLaterDate = Calendar.current.date(byAdding: .day, value: 2, to: Date())!
         let twoDaysLaterDate = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
@@ -93,11 +105,12 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         let twoDaysLaterDateString = dateFormatter.string(from: twoDaysLaterDate)
         let threeDaysLatterDateString = dateFormatter.string(from: threeDaysLatterDate)
         
-        
         API.get(city: Settings.City.cityForUrlName, url: Settings.API.URLFewDays, completHandler: { response in
             
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
 
+                self.cityLabel.text = Settings.City.cityForDisplayName
+                
                 self.todayFiltered = response?.list?.filter({($0.dtTxt?.contains(todayDateString))!})
                 self.tommorowFiltered = response?.list?.filter({($0.dtTxt?.contains(tommorowDateString))!})
                 self.oneDayLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(oneDayLaterDateString))!})
@@ -123,15 +136,10 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         let minTemperature = (filtered.min(by: { (item1, item2) -> Bool in
             return item1.main!.temp! < item2.main!.temp!
         })?.main?.temp)! - 273
-        let iconWeather = filtered.first?.weather?.first?.icon
-        let url = URL(string: "https://openweathermap.org/img/w/\(iconWeather!).png")
         
-        guard let data = try? Data(contentsOf: url!) else {
-            //Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
-            return
-        }
+        let iconWeather = IconOperations.getIcon(iconPath: filtered.first?.weather?.first?.icon ?? "01d")
     
-        let element  = MyWeather(icon: UIImage(data: data)!, titleString: day, maxTempString: String(format:"%.1f",maxTemperature), minTempString:String(format:"%.1f", minTemperature))
+        let element = MyWeather(icon: iconWeather!, titleString: day, maxTempString: String(format:"%.0f",maxTemperature), minTempString:String(format:"%.0f", minTemperature))
         
         self.arrayWeather.insert(element, at: self.arrayWeather.count)
         self.mainTableView.beginUpdates()
@@ -141,6 +149,7 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
     }
     
     @objc func refresh(){
+        
         arrayWeather = []
         makeRequest()
         mainTableView.reloadData()

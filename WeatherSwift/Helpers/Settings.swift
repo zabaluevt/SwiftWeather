@@ -15,7 +15,9 @@ struct Settings {
         
         static var numberOfSelectedRowCity: Int = 0
         
-        static var cityForUrlName: String = "samara" {
+        static var cityForDisplayName = "Самара"
+        
+        static var cityForUrlName = "samara" {
             didSet {
                 print("Выбран город " + cityForUrlName)
             }
