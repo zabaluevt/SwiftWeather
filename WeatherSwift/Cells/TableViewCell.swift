@@ -18,7 +18,10 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     
+    @IBOutlet weak var horizontalAdditionalStackView: UIStackView!
+    
     func commonInit(day: String, maxTemp: String, minTemp: String, icon: UIImage){
+        
         titleCellLabel.text = day
         minTemperature.text = minTemp
         maxTemperature.text = maxTemp
@@ -32,6 +35,7 @@ class TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
+        horizontalAdditionalStackView.isHidden = !selected
     }
 }
