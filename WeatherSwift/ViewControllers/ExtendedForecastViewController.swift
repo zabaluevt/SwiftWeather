@@ -18,14 +18,6 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
     var refreshControl = UIRefreshControl()
     var todayFiltered, tommorowFiltered, oneDayLaterFiltered, twoDaysLaterFiltered, threeDaysLatterFiltered: [List]?
     
-    struct MyWeather {
-        
-        var icon: UIImage
-        var titleString: String
-        var maxTempString: String
-        var minTempString: String
-    }
-    
     func popupClosed() {
         
         refresh()
@@ -59,7 +51,7 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIndetifier", for: indexPath)
             as! TableViewCell
     
-       cell.commonInit(day: arrayWeather[indexPath.row].titleString, maxTemp: arrayWeather[indexPath.row].maxTempString, minTemp: arrayWeather[indexPath.row].minTempString, icon: arrayWeather[indexPath.row].icon)
+        cell.commonInit(day: arrayWeather[indexPath.row].titleString, maxTemp: arrayWeather[indexPath.row].maxTempString, minTemp: arrayWeather[indexPath.row].minTempString, icon: arrayWeather[indexPath.row].icon, additional: arrayWeather[indexPath.row].descriptionByTime)
 
         return cell
     }
@@ -77,9 +69,9 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.jpg")!)
-        
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         self.mainTableView.register(nib, forCellReuseIdentifier: "CellIndetifier")
+        
         makeRequest()
         
         //swipe down
@@ -92,13 +84,6 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
         rightSwipe.direction = .right
         
         view.addGestureRecognizer(rightSwipe)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        //убираем select с выбранной ячейки
-        mainTableView.reloadData()
     }
     
     func makeRequest(){
@@ -140,6 +125,9 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
             })
         }, errorHandler: { error in
             
+            let alert = UIAlertController(title: "Ошибка", message: "Произошла неизвестная ошибка", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         })
     }
     
@@ -152,9 +140,19 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
             return item1.main!.temp! < item2.main!.temp!
         })?.main?.temp)! - 273
         
+        // должно возвращать default иконку
         let iconWeather = IconOperations.getIcon(iconPath: filtered.first?.weather?.first?.icon ?? "01d")
-    
-        let element = MyWeather(icon: iconWeather!, titleString: day, maxTempString: String(format:"%.0f",maxTemperature), minTempString:String(format:"%.0f", minTemperature))
+        
+        //TODO Придумать как сделать замыканием
+        var additionalDescription = [Additional]()
+        
+        for item in filtered{
+            let splitedTime = item.dtTxt?.split(separator: " ").last?.split(separator: ":").first
+            
+            additionalDescription.append(Additional(additionalTimeString: String(splitedTime!), additionalIcon: IconOperations.getIcon(iconPath: (item.weather?.first?.icon)!), additionalDegreesString: String(format:"%.0f", (item.main?.temp!)! - 273)))
+        }
+        
+        let element = MyWeather(icon: iconWeather, titleString: day, maxTempString: String(format:"%.0f",maxTemperature), minTempString:String(format:"%.0f", minTemperature), descriptionByTime: additionalDescription)
         
         self.arrayWeather.insert(element, at: self.arrayWeather.count)
         self.mainTableView.beginUpdates()
@@ -173,8 +171,8 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
     
     @objc func handelSwipe(sender: UISwipeGestureRecognizer){
         
-        if let navgateBack = self.navigationController {
-            navgateBack.popViewController(animated: true)
+        if let navigateBack = self.navigationController {
+            navigateBack.popViewController(animated: true)
         }
     }
 }

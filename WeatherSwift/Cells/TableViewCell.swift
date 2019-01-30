@@ -20,12 +20,34 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var horizontalAdditionalStackView: UIStackView!
     
-    func commonInit(day: String, maxTemp: String, minTemp: String, icon: UIImage){
+    @IBOutlet var timeCollectionLabel: [UILabel]!
+
+    @IBOutlet var iconCollectionImageView: [UIImageView]!
+    
+    @IBOutlet var degreesCollectionLabel: [UILabel]!
+    
+    @IBOutlet weak var bottomScrollView: UIScrollView!
+    
+    func commonInit(day: String, maxTemp: String, minTemp: String, icon: UIImage, additional: [Additional]){
         
         titleCellLabel.text = day
         minTemperature.text = minTemp
         maxTemperature.text = maxTemp
         iconImageView.image = icon
+        
+        bottomScrollView.isScrollEnabled = !(additional.count < 5)
+        
+        for (index, element) in timeCollectionLabel.enumerated(){
+            element.text = (additional.count > index) ? additional[index].additionalTimeString : ""
+        }
+        
+        for (index, element) in iconCollectionImageView.enumerated(){
+            element.image = (additional.count > index) ? additional[index].additionalIcon : nil
+        }
+        
+        for (index, element) in degreesCollectionLabel.enumerated(){
+            element.text = (additional.count > index) ? additional[index].additionalDegreesString : ""
+        }
     }
     
     override func awakeFromNib() {
@@ -36,6 +58,6 @@ class TableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        horizontalAdditionalStackView.isHidden = !selected
+        //horizontalAdditionalStackView.isHidden = !selected
     }
 }

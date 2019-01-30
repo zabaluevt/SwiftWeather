@@ -11,10 +11,6 @@ import Alamofire
 
 class MainViewController: UIViewController, PopupDelegate {
     
-    func popupClosed() {
-        makeRequest()
-    }
-    
     @IBAction func menuButtonClick(_ sender: Any) {
         
         let popup = PopupViewController.create()
@@ -24,38 +20,39 @@ class MainViewController: UIViewController, PopupDelegate {
         PopupViewController.shared.delegate = self
     }
     
-    
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var descriptionWeatherLabel: UILabel!
     
-    func getIcon(iconPath: String) -> UIImage?{
-        
-        if (UIImage(named: iconPath) != nil){
-            return UIImage(named: iconPath)!
-        }
-        else {
-            //TODO Error
-
-            return nil
-        }
-    }
-    
     func makeRequest() {
+        guard CheckInternet.connection() else {
+            let alert = UIAlertController(title: "Ошибка", message: "Проверьте соединение с интернетом.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         
         API.get(city: Settings.City.cityForUrlName, url: Settings.API.URLOneDay, completHandler: { response in
             self.cityNameLabel.text = Settings.City.cityForDisplayName
             self.descriptionWeatherLabel.text = response?.weather?.first?.description ?? ""
-            self.iconImageView.image = self.getIcon(iconPath: response?.weather?.first?.icon ?? "")
+            self.iconImageView.image = IconOperations.getIcon(iconPath: response?.weather?.first?.icon ?? "")
             self.temperature.text = String(format:"%.0f", (response?.main?.temp)! - 273) + "℃"
         }, errorHandler: { error in
-            print("error")
+            
+            let alert = UIAlertController(title: "Ошибка", message: "Произошла ошибка получения данных с сервера, попробуйте позже.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         })
+    }
+    
+    func popupClosed() {
+        makeRequest()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.jpg")!)
         makeRequest()
     }

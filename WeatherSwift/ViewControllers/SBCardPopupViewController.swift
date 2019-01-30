@@ -8,6 +8,7 @@
 
 
 import UIKit
+//Взять файл с интернета, немного доработан под проект
 
 public protocol SBCardPopupContent: class {
     var popupViewController: SBCardPopupViewController? {get set}

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Тимофей Забалуев. All rights reserved.
 //
 import SystemConfiguration
+//Взял с интернета класс
 
 public class CheckInternet{
     

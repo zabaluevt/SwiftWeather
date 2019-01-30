@@ -13,10 +13,9 @@ struct API {
     
     static func get(city: String, url: String, completHandler: @escaping ((_ response: (JsonResponse?)) -> Void), errorHandler: @escaping ((_ error: Error) -> Void)) {
         
-        let dataRequest = request(url, method: .get, parameters: ["q": city, "lang": "ru" ,"APPID": Settings.API.appId])
+        let dataRequest = request(url, method: .get, parameters:["q": city, "lang": "ru" ,"APPID": Settings.API.appId])
         dataRequest.responseData { (dataResponse) in
             if let error = dataResponse.error {
-                print("Error!!! \(error)")
                 errorHandler(error)
                 return
             }
@@ -26,7 +25,6 @@ struct API {
                     let response = try decoder.decode(JsonResponse.self, from: data)
                     completHandler(response)
                 } catch (let error) {
-                    print("Error!!! \(error)")
                     errorHandler(error)
                 }
             }

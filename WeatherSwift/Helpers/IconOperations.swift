@@ -10,15 +10,13 @@ import UIKit
 
 public class IconOperations {
     
-    static func getIcon(iconPath: String) -> UIImage?{
+    static func getIcon(iconPath: String) -> UIImage{
         
         if let icon = (UIImage(named: (iconPath))){
             return icon
         }
         else {
-            //TODO Error
-
-            return nil
+            return UIImage()
         }
     }
 }
