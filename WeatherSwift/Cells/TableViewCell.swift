@@ -33,6 +33,7 @@ class TableViewCell: UITableViewCell {
         maxTemperature.text = maxTemp
         iconImageView.image = icon
         
+        //TODO сделать формулой через вычисления ширины экрана
         bottomScrollView.isScrollEnabled = !(additional.count < 5)
         
         for (index, element) in timeCollectionLabel.enumerated(){
