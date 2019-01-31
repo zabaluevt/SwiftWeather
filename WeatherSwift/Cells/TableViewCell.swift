@@ -18,8 +18,6 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     
-    @IBOutlet weak var horizontalAdditionalStackView: UIStackView!
-    
     @IBOutlet var timeCollectionLabel: [UILabel]!
 
     @IBOutlet var iconCollectionImageView: [UIImageView]!
@@ -58,6 +56,6 @@ class TableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        //horizontalAdditionalStackView.isHidden = !selected
+        bottomScrollView.isHidden = !selected
     }
 }

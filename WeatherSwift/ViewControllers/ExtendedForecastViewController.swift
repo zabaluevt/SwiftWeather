@@ -13,7 +13,7 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var cityLabel: UILabel!
     
-    var selectedRow: IndexPath = []
+    var selectedRow: IndexPath? = []
     var arrayWeather: [MyWeather] = []
     var refreshControl = UIRefreshControl()
     var todayFiltered, tommorowFiltered, oneDayLaterFiltered, twoDaysLaterFiltered, threeDaysLatterFiltered: [List]?
@@ -25,11 +25,19 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedRow = indexPath
-        
-        tableView.beginUpdates()
-        tableView.rowHeight = 160
-        tableView.endUpdates()
+        if (selectedRow == indexPath){
+            selectedRow = nil
+            tableView.beginUpdates()
+            tableView.rowHeight = -1
+            tableView.endUpdates()
+        }
+        else{
+            selectedRow = indexPath
+            
+            tableView.beginUpdates()
+            tableView.rowHeight = 160
+            tableView.endUpdates()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
