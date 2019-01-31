@@ -21,6 +21,7 @@ class ExtendedForecastViewController: UIViewController, UITableViewDataSource, U
     func popupClosed() {
         
         refresh()
+        selectedRow = nil
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
